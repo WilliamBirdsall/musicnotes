@@ -1,12 +1,19 @@
-const Note = function(props) {
+import { useParams } from 'react-router';
+
+import NoteDetail from './NoteDetail';
+import Sections from './Sections';
+
+const Note = function() {
+    const { id } = useParams();
+
+    // Query localStorage for note by ID
+    const notes = JSON.parse(localStorage.getItem('notes'));
+    const noteData = notes.filter((n) => { return  n.id === id })[0];
+
     return(
         <div className="note">
-            <h2>{props.title} – {props.artist}</h2>
-            <div className="meta-data">
-                <span className="genre">{props.genre}</span>
-                <span className="bpm">{props.bpm}</span>
-                <span className="scale">{props.noteKey} {props.scale}</span>
-            </div>
+            <NoteDetail {...noteData} />
+            <Sections {...noteData.sections} />
         </div>
     );
 };

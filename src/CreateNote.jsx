@@ -6,7 +6,7 @@ const CreateNote = () => {
             event.preventDefault();
 
             const newNote = Object.fromEntries(new FormData(event.target));
-            console.log(newNote);
+            newNote['id'] = crypto.randomUUID().slice(0,8);
             newNote['sections'] = [];
 
             const oldNotes = JSON.parse(localStorage.getItem('notes') || "[]");

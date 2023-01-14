@@ -5,8 +5,13 @@ const Header = function() {
         <header>
             <Link to="/" className="logo">MusicNotes</Link>
             <nav>
-                <Link to="/create" className="create-btn">+ New Note</Link>
-                <Link to="/about">About</Link>
+                <div className="nav-left">
+                    <Link to="/">Notes</Link>
+                    <Link to="/about">About</Link>
+                </div>
+                <div className="nav-right">
+                    <Link to="/create" className="create-btn">+ New Note</Link>
+                </div>
             </nav>
         </header>
     );

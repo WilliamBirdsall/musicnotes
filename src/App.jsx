@@ -9,6 +9,7 @@ import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
 import Note from './Note';
+import NoteLink from './NoteLink';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -29,7 +30,7 @@ const App = function() {
                             <Route path="/" element={<Home />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/create" element={<Create />} />
-                            <Route path="/note/:id" element={<Note />} />
+                            <Route path="/notes/:id" element={<Note />} />
                         </Routes>
                     </main>
                     <Footer />
