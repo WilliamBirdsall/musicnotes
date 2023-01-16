@@ -5,17 +5,13 @@ const CreateNote = () => {
         mutationFn: (event) => {
             event.preventDefault();
 
+            const id = crypto.randomUUID().slice(0,8);
+
             const newNote = Object.fromEntries(new FormData(event.target));
-            newNote['id'] = crypto.randomUUID().slice(0,8);
+            newNote['id'] = id;
             newNote['sections'] = [];
 
-            const oldNotes = JSON.parse(localStorage.getItem('notes') || "[]");
-
-            let updatedNotes = oldNotes;
-
-            updatedNotes.push(newNote);
-
-            return localStorage.setItem('notes', JSON.stringify(updatedNotes));
+            return localStorage.setItem(id, JSON.stringify(newNote));
         }
     });
 

@@ -1,3 +1,5 @@
+import CreateSection from './CreateSection';
+
 const Sections = (props) => {
     function addSection() {
 
