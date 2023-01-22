@@ -8,7 +8,15 @@ const NoteList = function() {
     return(
         <div className="notes">
             {results.data?.map((note) => {
-                return <NoteLink {...note} />
+                return (
+                    <>
+                        <NoteLink {...note} />
+                        <div className="note-actions">
+                            <button className="edit-note">Edit</button>
+                            <button className="delete-note">Delete</button>
+                        </div>
+                    </>
+                );
             })}
         </div>
     );

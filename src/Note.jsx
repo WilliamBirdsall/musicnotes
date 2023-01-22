@@ -12,7 +12,11 @@ const Note = function() {
     return(
         <div className="note">
             <NoteDetail {...noteData} />
-            <Sections {...noteData.sections} />
+            <Sections id={noteData.id} sections={noteData.sections} />
+            <div className="note-actions">
+                <button className="edit-note">Edit</button>
+                <button className="delete-note">Delete</button>
+            </div>
         </div>
     );
 };
