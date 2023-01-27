@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import getNotes from "./getNotes";
+import NoteActions from './NoteActions';
 import NoteLink from "./NoteLink";
 
 const NoteList = function() {
@@ -11,10 +12,7 @@ const NoteList = function() {
                 return (
                     <div className="note" data-note-id={note.id}>
                         <NoteLink {...note} />
-                        <div className="note-actions">
-                            <button className="edit-note">Edit</button>
-                            <button className="delete-note">Delete</button>
-                        </div>
+                        <NoteActions note-id={note.id} />
                     </div>
                 );
             })}
