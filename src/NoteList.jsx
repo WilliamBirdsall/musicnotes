@@ -9,13 +9,13 @@ const NoteList = function() {
         <div className="notes">
             {results.data?.map((note) => {
                 return (
-                    <>
+                    <div className="note" data-note-id={note.id}>
                         <NoteLink {...note} />
                         <div className="note-actions">
                             <button className="edit-note">Edit</button>
                             <button className="delete-note">Delete</button>
                         </div>
-                    </>
+                    </div>
                 );
             })}
         </div>
