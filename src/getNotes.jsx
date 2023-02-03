@@ -1,7 +1,7 @@
 const getNotes = async function({ queryKey }) {
-    return Object.keys(localStorage).map((id) => {
-        return JSON.parse(localStorage.getItem(id));
-    });
+    const parseNote = id => JSON.parse(localStorage.getItem(id));
+
+    return Object.keys(localStorage).map(parseNote);
 }
 
 export default getNotes;
