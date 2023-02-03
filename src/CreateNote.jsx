@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import NoteForm from './NoteForm';
 
 const CreateNote = () => {
-    const mutation = useMutation({
+    const createNote = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
 
@@ -18,7 +18,7 @@ const CreateNote = () => {
     });
 
     return (
-        <NoteForm onSubmit={mutation} />
+        <NoteForm mutation={createNote} submitText="Create" />
     );
 };
 
