@@ -15,14 +15,21 @@ const SectionActions = (props) => {
     const createComment = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
-            console.log("Create comment...");
+            console.log("Create comment...", noteID, id);
         }
     });
 
     const editSection = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
-            console.log("Edit section");
+            console.log("Edit section...", noteID, id);
+
+            let updatedSection = Object.fromEntries(new FormData(event.target));
+            updatedSection['id'] = id;
+
+            note.sections[id] = updatedSection;
+
+            localStorage.setItem(noteID, JSON.stringify(note));
         }
     });
 
@@ -30,7 +37,6 @@ const SectionActions = (props) => {
         mutationFn: (event) => {
             event.preventDefault();
 
-            const note = JSON.parse(localStorage.getItem(noteID));
             delete note.sections[id];
 
             localStorage.setItem(noteID, JSON.stringify(note));
