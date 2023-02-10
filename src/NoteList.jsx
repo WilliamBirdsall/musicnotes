@@ -10,7 +10,7 @@ const NoteList = () => {
         <>
             <h2>Notes</h2>
             <div className="note-list">
-                {notes.data?.map(note => <Note {...note} />)}
+                {notes.data?.map(note => <Note key={note.id} {...note} />)}
             </div>
         </>
     );

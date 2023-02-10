@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import { useParams } from 'react-router';
@@ -6,6 +6,8 @@ import { useParams } from 'react-router';
 import SectionForm from './SectionForm';
 
 const CreateSectionButton = (props) => {
+    const queryClient = useQueryClient();
+
     const [showModal, setShowModal] = useState(false);
 
     const note = props.note;
@@ -21,7 +23,10 @@ const CreateSectionButton = (props) => {
 
             note.sections[secID] = newSection;
 
-            return localStorage.setItem(note.id, JSON.stringify(note));
+            localStorage.setItem(note.id, JSON.stringify(note));
+
+            // Invalidate 'note' query
+            queryClient.invalidateQueries({queryKey: ['note']});
         }
     });
 

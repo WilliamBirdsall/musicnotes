@@ -20,7 +20,7 @@ const Note = (props) => {
     });
 
     return (
-        <div className="note" key={props.id}>
+        <div className="note">
             <Link to={noteLink} className="note__link">
                 <h3 className="note__heading">
                     <span className="note__title">{props.title}</span>

@@ -24,7 +24,6 @@ const SectionActions = (props) => {
     const editSection = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
-            console.log("Edit section...", noteID, id);
 
             let updatedSection = Object.fromEntries(new FormData(event.target));
             updatedSection['id'] = id;
@@ -32,6 +31,9 @@ const SectionActions = (props) => {
             note.sections[id] = updatedSection;
 
             localStorage.setItem(noteID, JSON.stringify(note));
+
+            // Close modal
+            setShowModal(false);
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});

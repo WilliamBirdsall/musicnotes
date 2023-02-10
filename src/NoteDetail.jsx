@@ -27,7 +27,7 @@ const NoteDetail = (props) => {
             </div>
             <h2>Sections</h2>
             <div className="section-list">
-                {Object.values(note.sections).map(section => <Section section={section} noteID={id} />)}
+                {Object.values(note.sections).map(section => <Section key={section.id} section={section} noteID={id} />)}
             </div>
             <CreateSectionButton note={note} />
         </div>
