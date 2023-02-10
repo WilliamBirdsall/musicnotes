@@ -1,4 +1,4 @@
-import NoteList from './NoteList';
+import NoteList from '../note/NoteList';
 
 const Home = function() {
     return(

@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import About from './About';
-import CreateNote from './CreateNote.jsx';
-import EditNote from './EditNote.jsx';
-import NoteDetail from './NoteDetail.jsx';
+import About from './components/pages/About';
+import CreateNote from './components/note/CreateNote.jsx';
+import EditNote from './components/note/EditNote.jsx';
+import NoteDetail from './components/note/NoteDetail.jsx';
 import Footer from './Footer';
 import Header from './Header';
-import Home from './Home';
+import Home from './components/pages/Home';
 
 
 const queryClient = new QueryClient({

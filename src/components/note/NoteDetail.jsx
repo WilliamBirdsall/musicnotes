@@ -1,9 +1,9 @@
 import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
-import getNote from './getNote';
+import getNote from '../../queries/getNote';
 
-import CreateSectionButton from './CreateSectionButton';
-import Section from './Section';
+import CreateSectionButton from '../section/CreateSectionButton';
+import Section from '../section/Section';
 
 const NoteDetail = (props) => {
     const { id } = useParams();
