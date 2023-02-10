@@ -13,7 +13,7 @@ const CreateNote = () => {
 
             const newNote = Object.fromEntries(new FormData(event.target));
             newNote['id'] = id;
-            newNote['sections'] = [];
+            newNote['sections'] = {};
 
             // Invalidate 'notes' query
             queryClient.invalidateQueries({queryKey: ['notes']});

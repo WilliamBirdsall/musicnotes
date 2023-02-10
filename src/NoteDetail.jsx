@@ -1,5 +1,8 @@
 import { useParams } from 'react-router';
 
+import CreateSectionButton from './CreateSectionButton';
+import Section from './Section';
+
 const NoteDetail = (props) => {
     const { id } = useParams();
 
@@ -19,6 +22,10 @@ const NoteDetail = (props) => {
                 <span className="note-detail__scale">{note.scale}</span>
             </div>
             <h4>Sections</h4>
+            <div className="section-list">
+                {Object.values(note.sections).map(section => <Section {...section} />)}
+            </div>
+            <CreateSectionButton note={note} />
         </div>
     );
 };
