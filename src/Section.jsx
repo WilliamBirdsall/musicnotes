@@ -1,17 +1,19 @@
+import SectionActions from './SectionActions';
+
 const Section = (props) => {
-    return (
+    const {title, start, end, id} = props.section;
+
+    return(
         <div className="section">
-            <h3>{props.title}</h3>
-            <span className="start">{props.start}</span> – <span className="end">{props.end}</span>
-            <div className="comments">
-                {props.comments}
+            <h3 className="section__title">{title}</h3>
+            <div className="section__times">
+                <span className="section__start">{start}</span>
+                -
+                <span className="section__end">{end}</span>
             </div>
-            <div className="section-actions">
-                <button className="edit-section">Edit</button>
-                <button className="delete-section">Delete</button>
-            </div>
+            <SectionActions id={id} noteID={props.noteID} />
         </div>
     );
-};
+}
 
 export default Section;
