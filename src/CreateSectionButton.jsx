@@ -16,6 +16,7 @@ const CreateSectionButton = (props) => {
 
             const secID = crypto.randomUUID().slice(0,8);
             const newSection = Object.fromEntries(new FormData(event.target));
+            newSection['comments'] = {};
 
             note.sections[secID] = newSection;
 
