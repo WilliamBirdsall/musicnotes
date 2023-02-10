@@ -7,8 +7,8 @@ import About from './components/pages/About';
 import CreateNote from './components/note/CreateNote.jsx';
 import EditNote from './components/note/EditNote.jsx';
 import NoteDetail from './components/note/NoteDetail.jsx';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './components/template/Footer';
+import Header from './components/template/Header';
 import Home from './components/pages/Home';
 
 
