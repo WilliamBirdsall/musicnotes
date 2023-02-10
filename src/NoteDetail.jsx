@@ -1,4 +1,6 @@
 import { useParams } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
+import getNote from './getNote';
 
 import CreateSectionButton from './CreateSectionButton';
 import Section from './Section';
@@ -6,7 +8,9 @@ import Section from './Section';
 const NoteDetail = (props) => {
     const { id } = useParams();
 
-    const note = JSON.parse(localStorage.getItem(id));
+    const note = useQuery(['note', id], getNote).data;
+
+    if(!note) return <>Loading</>
 
     return (
         <div className="note-detail">

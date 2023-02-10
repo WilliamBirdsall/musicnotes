@@ -1,6 +1,7 @@
 import SectionActions from './SectionActions';
 
 const Section = (props) => {
+    console.log(props);
     const {title, start, end, id} = props.section;
 
     return(
