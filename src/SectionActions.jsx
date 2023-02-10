@@ -1,10 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import SectionForm from "./SectionForm.jsx";
 
 const SectionActions = (props) => {
+    const queryClient = useQueryClient();
+
     const [showModal, setShowModal] = useState(false);
 
     const { id, noteID } = props;
@@ -30,6 +32,9 @@ const SectionActions = (props) => {
             note.sections[id] = updatedSection;
 
             localStorage.setItem(noteID, JSON.stringify(note));
+
+            // Invalidate 'note' query
+            queryClient.invalidateQueries({queryKey: ['note']});
         }
     });
 
@@ -40,6 +45,9 @@ const SectionActions = (props) => {
             delete note.sections[id];
 
             localStorage.setItem(noteID, JSON.stringify(note));
+
+            // Invalidate 'note' query
+            queryClient.invalidateQueries({queryKey: ['note']});
         }
     });
 
