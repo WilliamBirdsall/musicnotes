@@ -2,7 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import SectionForm from "./SectionForm.jsx";
+import CommentForm from '../comment/CommentForm';
+import SectionForm from './SectionForm';
 
 const SectionActions = (props) => {
     const queryClient = useQueryClient();
@@ -17,7 +18,18 @@ const SectionActions = (props) => {
     const createComment = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
-            console.log("Create comment...", noteID, id);
+
+            const commentId = crypto.randomUUID().slice(0,8);
+            const newComment = Object.fromEntries(new FormData(event.target));
+            newComment['id'] = commentId;
+
+
+            note.sections[id].comments[commentId] = newComment;
+
+            localStorage.setItem(note.id, JSON.stringify(note));
+
+            // Invalidate 'note' query
+            queryClient.invalidateQueries({queryKey: ['note']});
         }
     });
 
@@ -55,7 +67,15 @@ const SectionActions = (props) => {
 
     return(
         <div className="section-actions">
-            <button onClick={createComment.mutate} className="section__add-comment">+ Add Comment</button>
+            <button onClick={() => setShowModal(true)} className="section__add-comment">+ Add Comment</button>
+                {showModal && createPortal(
+                    <>
+                        <button onClick={() => setShowModal(false)}>Close</button>
+                        <h3>Add Comment</h3>
+                        <CommentForm commentData={section} mutation={createComment} submitText="Submit" />
+                    </>,
+                    document.getElementById("modal")
+                )}
             <button onClick={() => setShowModal(true)} className="section-actions__edit">Edit</button>
                 {showModal && createPortal(
                     <>

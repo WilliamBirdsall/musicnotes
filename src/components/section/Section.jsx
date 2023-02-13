@@ -1,7 +1,8 @@
+import CommentList from '../comment/CommentList';
 import SectionActions from './SectionActions';
 
 const Section = (props) => {
-    const {title, start, end, id} = props.section;
+    const {title, start, end, id, comments} = props.section;
 
     return(
         <div className="section">
@@ -10,6 +11,9 @@ const Section = (props) => {
                 <span className="section__start">{start}</span>
                 -
                 <span className="section__end">{end}</span>
+            </div>
+            <div className="section__commments">
+                <CommentList comments={comments} />
             </div>
             <SectionActions id={id} noteID={props.noteID} />
         </div>

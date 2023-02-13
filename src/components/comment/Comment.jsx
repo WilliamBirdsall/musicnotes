@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import CommentActions from './CommentActions';
+
 const Comment = (props) => {
     const { text, tag } = props.comment;
 
@@ -10,6 +12,7 @@ const Comment = (props) => {
             <div className="comment__text">
                 {text}
             </div>
+            <CommentActions />
         </div>
     );
 }

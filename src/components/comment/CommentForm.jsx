@@ -11,7 +11,7 @@ const CommentForm = (props) => {
     const submitText = props.submitText;
 
     return (
-        <form action={props.mutation.mutate}>
+        <form onSubmit={props.mutation.mutate}>
             <label htmlFor="text">Text:</label>
             <textarea name="text" cols="30" rows="10" defaultValue={comment.text}></textarea>
 
@@ -23,6 +23,7 @@ const CommentForm = (props) => {
                 <option value="sound-design">Sound Design</option>
                 <option value="untagged">Untagged</option>
             </select>
+            <button type="submit">{submitText}</button>
         </form>
     );
 }
