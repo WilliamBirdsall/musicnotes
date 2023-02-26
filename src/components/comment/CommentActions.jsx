@@ -2,15 +2,15 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { NoteContext } from './../note/NoteContext';
+import { ModalContext } from '../template/ModalContext';
+import { NoteContext } from '../note/NoteContext';
 
 import CommentForm from './CommentForm';
 
 const CommentActions = (props) => {
     const queryClient = useQueryClient();
 
-    const [showModal, setShowModal] = useState(false);
-
+    const [modalContext, setModalContext] = useContext(ModalContext);
     const note = useContext(NoteContext);
 
     const { sectionId, commentId } = props;
@@ -29,7 +29,7 @@ const CommentActions = (props) => {
             localStorage.setItem(note.id, JSON.stringify(note));
 
             // Close modal
-            setShowModal(false);
+            setModalContext(false);
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
@@ -51,10 +51,10 @@ const CommentActions = (props) => {
 
     return (
         <div className="comment-actions">
-            <button onClick={() => setShowModal(true)} className="comment-actions__edit">Edit</button>
-                {showModal && createPortal(
+            <button onClick={() => setModalContext(true)} className="comment-actions__edit">Edit</button>
+                {modalContext && createPortal(
                     <>
-                        <button onClick={() => setShowModal(false)}>Close</button>
+                        <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>Edit Comment</h3>
                         <CommentForm commentData={comment} mutation={editComment} submitText="Save" />
                     </>,

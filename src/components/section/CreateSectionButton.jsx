@@ -1,14 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPortal } from 'react-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useParams } from 'react-router';
+
+import { ModalContext } from '../template/ModalContext';
 
 import SectionForm from './SectionForm';
 
 const CreateSectionButton = (props) => {
     const queryClient = useQueryClient();
 
-    const [showModal, setShowModal] = useState(false);
+    const [modalContext, setModalContext] = useContext(ModalContext);
 
     const note = props.note;
 
@@ -32,10 +34,10 @@ const CreateSectionButton = (props) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>+ Add Section</button>
-                {showModal && createPortal(
+            <button onClick={() => setModalContext(true)}>+ Add Section</button>
+                {modalContext && createPortal(
                     <>
-                        <button onClick={() => setShowModal(false)}>Close</button>
+                        <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>New Section</h3>
                         <SectionForm mutation={createSection} submitText="Create" />
                     </>,

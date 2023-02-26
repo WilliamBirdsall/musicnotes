@@ -2,7 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { NoteContext } from './../note/NoteContext.js';
+import { ModalContext } from '../template/ModalContext';
+import { NoteContext } from './../note/NoteContext';
 
 import CommentForm from '../comment/CommentForm';
 import SectionForm from './SectionForm';
@@ -10,11 +11,10 @@ import SectionForm from './SectionForm';
 const SectionActions = (props) => {
     const queryClient = useQueryClient();
 
-    const [showModal, setShowModal] = useState(false);
+    const [modalContext, setModalContext] = useContext(ModalContext);
+    const note = useContext(NoteContext);
 
     const { id, noteId } = props;
-
-    const note = useContext(NoteContext);
 
     const section = note.sections[id];
 
@@ -47,7 +47,7 @@ const SectionActions = (props) => {
             localStorage.setItem(noteID, JSON.stringify(note));
 
             // Close modal
-            setShowModal(false);
+            setModalContext(false);
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
@@ -69,19 +69,19 @@ const SectionActions = (props) => {
 
     return(
         <div className="section-actions">
-            <button onClick={() => setShowModal("addComment")} className="section__add-comment">+ Add Comment</button>
-                {showModal === "addComment" && createPortal(
+            <button onClick={() => setModalContext("addComment")} className="section__add-comment">+ Add Comment</button>
+                {modalContext === "addComment" && createPortal(
                     <>
-                        <button onClick={() => setShowModal(false)}>Close</button>
+                        <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>Add Comment</h3>
                         <CommentForm commentData={section} mutation={createComment} submitText="Submit" />
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={() => setShowModal("editSection")} className="section-actions__edit">Edit</button>
-                {showModal === "editSection" && createPortal(
+            <button onClick={() => setModalContext("editSection")} className="section-actions__edit">Edit</button>
+                {modalContext === "editSection" && createPortal(
                     <>
-                        <button onClick={() => setShowModal(false)}>Close</button>
+                        <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>Edit Section</h3>
                         <SectionForm sectionData={section} mutation={editSection} submitText="Save" />
                     </>,
