@@ -26,10 +26,10 @@ const NoteDetail = (props) => {
                 <span className="note-detail__scale">{note.scale}</span>
             </div>
             <h2>Sections</h2>
+            <CreateSectionButton note={note} />
             <div className="section-list">
                 {Object.values(note.sections).map(section => <Section key={section.id} section={section} noteID={id} />)}
             </div>
-            <CreateSectionButton note={note} />
         </div>
     );
 };

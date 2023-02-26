@@ -9,9 +9,13 @@ const CommentActions = (props) => {
 
     const [showModal, setShowModal] = useState(false);
 
+    const comment = "";
+
     const editComment = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
+
+            console.log("Edit comment...");
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
@@ -21,6 +25,8 @@ const CommentActions = (props) => {
     const deleteComment = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
+
+            console.log("Delete comment...");
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});

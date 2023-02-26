@@ -67,8 +67,8 @@ const SectionActions = (props) => {
 
     return(
         <div className="section-actions">
-            <button onClick={() => setShowModal(true)} className="section__add-comment">+ Add Comment</button>
-                {showModal && createPortal(
+            <button onClick={() => setShowModal("addComment")} className="section__add-comment">+ Add Comment</button>
+                {showModal === "addComment" && createPortal(
                     <>
                         <button onClick={() => setShowModal(false)}>Close</button>
                         <h3>Add Comment</h3>
@@ -76,8 +76,8 @@ const SectionActions = (props) => {
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={() => setShowModal(true)} className="section-actions__edit">Edit</button>
-                {showModal && createPortal(
+            <button onClick={() => setShowModal("editSection")} className="section-actions__edit">Edit</button>
+                {showModal === "editSection" && createPortal(
                     <>
                         <button onClick={() => setShowModal(false)}>Close</button>
                         <h3>Edit Section</h3>

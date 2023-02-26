@@ -25,6 +25,7 @@ const App = function() {
         return (
             <BrowserRouter>
                 <QueryClientProvider client={queryClient}>
+                    <div id="modal"></div>
                     <Header />
                     <main>
                         <Routes>
