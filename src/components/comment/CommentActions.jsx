@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
+
+import { NoteContext } from './../note/NoteContext';
 
 import CommentForm from './CommentForm';
 
@@ -9,13 +11,25 @@ const CommentActions = (props) => {
 
     const [showModal, setShowModal] = useState(false);
 
-    const comment = "";
+    const note = useContext(NoteContext);
+
+    const { sectionId, commentId } = props;
+
+    const comment = note.sections[sectionId].comments[commentId];
 
     const editComment = useMutation({
         mutationFn: (event) => {
             event.preventDefault();
 
-            console.log("Edit comment...");
+            let updatedComment = Object.fromEntries(new FormData(event.target));
+            updatedComment['id'] = commentId;
+
+            note.sections[sectionId].comments[commentId] = updatedComment;
+
+            localStorage.setItem(note.id, JSON.stringify(note));
+
+            // Close modal
+            setShowModal(false);
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
@@ -26,7 +40,9 @@ const CommentActions = (props) => {
         mutationFn: (event) => {
             event.preventDefault();
 
-            console.log("Delete comment...");
+            delete note.sections[sectionId].comments[commentId];
+
+            localStorage.setItem(note.id, JSON.stringify(note));
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});

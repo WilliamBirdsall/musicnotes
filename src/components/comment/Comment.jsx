@@ -3,7 +3,8 @@ import { useState } from 'react';
 import CommentActions from './CommentActions';
 
 const Comment = (props) => {
-    const { text, tag } = props.comment;
+    const { text, tag, id } = props.comment;
+    const sectionId = props.sectionId;
 
     const classes = `comment ${tag}`;
 
@@ -12,7 +13,7 @@ const Comment = (props) => {
             <div className="comment__text">
                 {text}
             </div>
-            <CommentActions />
+            <CommentActions sectionId={sectionId} commentId={id}/>
         </div>
     );
 }

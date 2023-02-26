@@ -2,6 +2,7 @@ import CommentList from '../comment/CommentList';
 import SectionActions from './SectionActions';
 
 const Section = (props) => {
+    const { noteId } = props.noteId;
     const {title, start, end, id, comments} = props.section;
 
     return(
@@ -13,9 +14,9 @@ const Section = (props) => {
                 <span className="section__end">{end}</span>
             </div>
             <div className="section__commments">
-                <CommentList comments={comments} />
+                <CommentList sectionId={id} comments={comments} />
             </div>
-            <SectionActions id={id} noteID={props.noteID} />
+            <SectionActions id={id} noteId={noteId} />
         </div>
     );
 }

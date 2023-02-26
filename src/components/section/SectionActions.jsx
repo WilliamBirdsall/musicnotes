@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
+
+import { NoteContext } from './../note/NoteContext.js';
 
 import CommentForm from '../comment/CommentForm';
 import SectionForm from './SectionForm';
@@ -10,9 +12,10 @@ const SectionActions = (props) => {
 
     const [showModal, setShowModal] = useState(false);
 
-    const { id, noteID } = props;
+    const { id, noteId } = props;
 
-    const note = JSON.parse(localStorage.getItem(noteID));
+    const note = useContext(NoteContext);
+
     const section = note.sections[id];
 
     const createComment = useMutation({
@@ -22,7 +25,6 @@ const SectionActions = (props) => {
             const commentId = crypto.randomUUID().slice(0,8);
             const newComment = Object.fromEntries(new FormData(event.target));
             newComment['id'] = commentId;
-
 
             note.sections[id].comments[commentId] = newComment;
 
