@@ -41,6 +41,7 @@ const SectionActions = (props) => {
 
             let updatedSection = Object.fromEntries(new FormData(event.target));
             updatedSection['id'] = id;
+            updateSection['comments'] = note.sections[id].comments;
 
             note.sections[id] = updatedSection;
 
@@ -69,8 +70,8 @@ const SectionActions = (props) => {
 
     return(
         <div className="section-actions">
-            <button onClick={() => setModalContext("addComment")} className="section__add-comment">+ Add Comment</button>
-                {modalContext === "addComment" && createPortal(
+            <button onClick={() => setModalContext(["addComment", section.id])} className="section__add-comment">+ Add Comment</button>
+                {modalContext[0] === "addComment" && section.id === modalContext[1] && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>Add Comment</h3>
@@ -78,8 +79,8 @@ const SectionActions = (props) => {
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={() => setModalContext("editSection")} className="section-actions__edit">Edit</button>
-                {modalContext === "editSection" && createPortal(
+            <button onClick={() => setModalContext(["editSection", section.id])} className="section-actions__edit">Edit</button>
+                {modalContext[0] === "editSection" && section.id === modalContext[1] && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>Edit Section</h3>

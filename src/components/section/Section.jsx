@@ -5,6 +5,8 @@ const Section = (props) => {
     const { noteId } = props.noteId;
     const {title, start, end, id, comments} = props.section;
 
+    console.log(comments);
+
     return(
         <div className="section">
             <h3 className="section__title">{title}</h3>

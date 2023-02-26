@@ -34,8 +34,8 @@ const CreateSectionButton = (props) => {
 
     return (
         <>
-            <button onClick={() => setModalContext("addSection")}>+ Add Section</button>
-                {modalContext === "addSection" && createPortal(
+            <button onClick={() => setModalContext(["addSection", note.id])}>+ Add Section</button>
+                {modalContext[0] === "addSection" && modalContext[1] === note.id && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>New Section</h3>
