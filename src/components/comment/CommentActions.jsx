@@ -51,8 +51,8 @@ const CommentActions = (props) => {
 
     return (
         <div className="comment-actions">
-            <button onClick={() => setModalContext(true)} className="comment-actions__edit">Edit</button>
-                {modalContext && createPortal(
+            <button onClick={() => setModalContext(['editComment', commentId])} className="comment-actions__edit">Edit</button>
+                {modalContext[0] === "editComment" && commentId === modalContext[1]  && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
                         <h3>Edit Comment</h3>

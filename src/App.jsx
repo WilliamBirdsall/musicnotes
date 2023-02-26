@@ -24,6 +24,9 @@ const queryClient = new QueryClient({
     },
 });
 
+const App = () => {
+        const [modalContext, setModalContext] = React.useState(false);
+
         return (
             <BrowserRouter>
                 <QueryClientProvider client={queryClient}>

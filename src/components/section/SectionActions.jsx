@@ -44,7 +44,7 @@ const SectionActions = (props) => {
 
             note.sections[id] = updatedSection;
 
-            localStorage.setItem(noteID, JSON.stringify(note));
+            localStorage.setItem(note.id, JSON.stringify(note));
 
             // Close modal
             setModalContext(false);
@@ -60,7 +60,7 @@ const SectionActions = (props) => {
 
             delete note.sections[id];
 
-            localStorage.setItem(noteID, JSON.stringify(note));
+            localStorage.setItem(note.id, JSON.stringify(note));
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
