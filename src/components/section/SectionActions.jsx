@@ -30,6 +30,9 @@ const SectionActions = (props) => {
 
             localStorage.setItem(note.id, JSON.stringify(note));
 
+            // Close modal
+            setModalContext(false);
+
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
         }
@@ -41,7 +44,7 @@ const SectionActions = (props) => {
 
             let updatedSection = Object.fromEntries(new FormData(event.target));
             updatedSection['id'] = id;
-            updateSection['comments'] = note.sections[id].comments;
+            updatedSection['comments'] = note.sections[id].comments;
 
             note.sections[id] = updatedSection;
 

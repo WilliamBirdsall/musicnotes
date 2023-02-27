@@ -27,6 +27,9 @@ const CreateSectionButton = (props) => {
 
             localStorage.setItem(note.id, JSON.stringify(note));
 
+            // Close modal
+            setModalContext(false);
+
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
         }
