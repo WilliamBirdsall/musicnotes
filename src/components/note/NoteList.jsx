@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import getNotes from './getNotes';
+import getNotes from '../../queries/getNotes';
 
-import Note from './Note';
+import Note from '../note/Note';
 
 const NoteList = () => {
     const notes = useQuery(['notes'], getNotes);

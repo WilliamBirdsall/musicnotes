@@ -1,0 +1,109 @@
+/* COLORS */
+:root {
+    --color-black: #222;
+    --color-dark-grey: #3D3D3D;
+    --color-grey: #C4C4C4;
+    --color-light-grey: #DFDFDF;
+    --color-white: #EFEFEF;
+
+    --color-primary: var(--color-black);
+    --color-secondary: var(--color-white);
+
+    --font-heading: Helvetica, sans-serif;
+    --font-body: Helvetica, sans-serif;
+
+    --base-vertical-padding: 4.375rem;
+    --base-side-padding: 32px;
+
+    --tablet-side-padding: 75px;
+    --laptop-side-padding: 150px;
+    --desktop-side-padding: 500px;
+
+    --border-radius-primary: 5px;
+}
+
+/* MAIN STRUCTURE */
+
+body {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    margin: 0 auto;
+}
+
+main {
+    padding: 0rem var(--base-side-padding);
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 2.5rem 0 1rem;
+}
+
+section {
+    line-height: 1.6rem;
+}
+
+footer {
+    text-align: center;
+}
+
+/* NOTES */
+.note {
+    background-color: var(--color-light-grey);
+    border-radius: var(--border-radius-primary);
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+}
+
+.note__heading {
+    margin-top: 0rem;
+}
+
+.note__meta {
+    margin-bottom: .25rem;
+}
+
+/* COMMENT */
+.comment {
+    border: solid .1rem var(--color-grey);
+    border-radius: var(--border-radius-primary);
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.comment.rythmic {
+    border-color: orange;
+}
+
+.comment.melodic {
+    border-color: yellow;
+}
+
+.comment.harmonic {
+    border-color: blue;
+}
+
+.comment.sound-design {
+    border-color: purple;
+}
+
+/* MODAL */
+#modal {
+    background-color: #ddd;
+    border-radius: var(--border-radius-primary);
+    margin: 50vh 50vw 0;
+    padding: 1.5rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* UTILS */
+.hidden {
+    display: none;
+    color: red;
+}

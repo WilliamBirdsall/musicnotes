@@ -1,9 +1,12 @@
 import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import NoteForm from './NoteForm';
 
 const CreateNote = () => {
     const queryClient = useQueryClient();
+
+    const navigate = useNavigate();
 
     const createNote = useMutation({
         mutationFn: (event) => {
@@ -18,7 +21,9 @@ const CreateNote = () => {
             // Invalidate 'notes' query
             queryClient.invalidateQueries({queryKey: ['notes']});
 
-            return localStorage.setItem(id, JSON.stringify(newNote));
+            localStorage.setItem(id, JSON.stringify(newNote));
+
+            navigate('/');
         }
     });
 

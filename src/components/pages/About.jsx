@@ -8,6 +8,7 @@ const About = function() {
             <p>Taking notes about how a song progresses, changes, or experiments sonically can be helpful when stuck writing a piece of music or in need of inspiration. Taking notes during listening sessions can also facilitate honing critical listening skills.</p>
             <h2>Have Feature Suggestions?</h2>
             <p>I would love to hear your thoughts about MusicNotes. Whether its a bug, feature request, or any other feedback, I will do my best to respond.</p>
+            <p>GitHub Repository: <a href="https://github.com/WilliamBirdsall/musicnotes">https://github.com/WilliamBirdsall/musicnotes</a></p>
         </section>
     );
 };
