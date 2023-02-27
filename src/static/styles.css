@@ -67,6 +67,11 @@ footer {
     margin-bottom: .25rem;
 }
 
+/* SECTIONS */
+.add-section-btn {
+    display: inline;
+}
+
 /* COMMENT */
 .comment {
     border: solid .1rem var(--color-grey);
