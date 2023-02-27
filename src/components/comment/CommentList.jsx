@@ -4,9 +4,10 @@ const CommentList = (props) => {
     const sectionId = props.sectionId;
     const comments = Object.values(props.comments);
 
+    if(!comments.length) return;
+
     return (
         <>
-            <h4>Comments</h4>
             {comments.map(c => <Comment key={c.id} comment={c} sectionId={sectionId} />)}
         </>
     );
