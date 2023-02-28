@@ -1,4 +1,4 @@
-# musicnotes
+# MusicNotes
 
 ## What is MusicNotes?
 
