@@ -6,6 +6,7 @@ import { ModalContext } from '../template/ModalContext';
 import { NoteContext } from '../note/NoteContext';
 
 import CommentForm from './CommentForm';
+import Icons from '../shared/Icons';
 
 const CommentActions = (props) => {
     const queryClient = useQueryClient();
@@ -51,7 +52,9 @@ const CommentActions = (props) => {
 
     return (
         <div className="comment-actions">
-            <button onClick={() => setModalContext(['editComment', commentId])} className="comment-actions__edit">Edit</button>
+            <button onClick={() => setModalContext(['editComment', commentId])} className="comment-actions__edit">
+                <Icons.EditIcon />
+            </button>
                 {modalContext[0] === "editComment" && commentId === modalContext[1]  && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
@@ -61,7 +64,7 @@ const CommentActions = (props) => {
                     document.getElementById("modal")
                 )}
             <button onClick={deleteComment.mutate} className="close-btn comment-actions__delete">
-                &#10005;
+                <Icons.DeleteIcon />
             </button>
         </div>
     );

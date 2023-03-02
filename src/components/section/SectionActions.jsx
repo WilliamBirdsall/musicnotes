@@ -1,11 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 
 import { ModalContext } from '../template/ModalContext';
 import { NoteContext } from './../note/NoteContext';
 
 import CommentForm from '../comment/CommentForm';
+import Icons from '../shared/Icons';
 import SectionForm from './SectionForm';
 
 const SectionActions = (props) => {
@@ -82,7 +83,9 @@ const SectionActions = (props) => {
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={() => setModalContext(["editSection", section.id])} className="section-actions__edit">Edit</button>
+            <button onClick={() => setModalContext(["editSection", section.id])} className="section-actions__edit">
+                <Icons.EditIcon />
+            </button>
                 {modalContext[0] === "editSection" && section.id === modalContext[1] && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
@@ -92,7 +95,7 @@ const SectionActions = (props) => {
                     document.getElementById("modal")
                 )}
             <button onClick={deleteSection.mutate} className="close-btn section-actions__delete">
-                &#10005;
+                <Icons.DeleteIcon />
             </button>
         </div>
     );

@@ -20,16 +20,10 @@ const NoteDetail = (props) => {
         <NoteContext.Provider value={note}>
             <div className="note-detail">
                 <h1 className="note-detail__heading">
-                    <span className="note-detail__title">{note.title}</span>
-                    -
-                    <span className="note-detail__artist">{note.artist}</span>
+                    {note.title} &ndash; {note.artist}
                 </h1>
                 <div className="note-detail__meta">
-                    <span className="note-detail__genre">{note.genre}</span>
-                    <span className="note-detail__divider">|</span>
-                    <span className="note-detail__bpm">{note.bpm}bpm</span>
-                    <span className="note-detail__divider">|</span>
-                    <span className="note-detail__key">{note.noteKey} {note.scale}</span>
+                    {note.genre} &bull; {note.bpm}bpm &bull; {note.noteKey} {note.scale}
                 </div>
                 <div className="note-detail__sections-heading">
                     <h2>Sections</h2>

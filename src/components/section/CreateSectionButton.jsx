@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPortal } from 'react-dom';
-import { useContext, useState } from 'react';
-import { useParams } from 'react-router';
+import { useContext } from 'react';
 
 import { ModalContext } from '../template/ModalContext';
 
+import Icons from '../shared/Icons';
 import SectionForm from './SectionForm';
 
 const CreateSectionButton = (props) => {
@@ -37,7 +37,9 @@ const CreateSectionButton = (props) => {
 
     return (
         <>
-            <button className="add-section-btn" onClick={() => setModalContext(["addSection", note.id])}>+</button>
+            <button className="add-section-btn" onClick={() => setModalContext(["addSection", note.id])}>
+                <Icons.NewItemIcon />
+            </button>
                 {modalContext[0] === "addSection" && modalContext[1] === note.id && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
