@@ -13,7 +13,7 @@ const Section = (props) => {
                 -
                 <span className="section__end">{end}</span>
             </div>
-            <SectionActions id={id} noteId={noteId} />
+            <SectionActions id={id} />
             <div className="section__commments">
                 <CommentList sectionId={id} comments={comments} />
             </div>

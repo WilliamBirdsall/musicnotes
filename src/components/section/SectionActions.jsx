@@ -14,7 +14,7 @@ const SectionActions = (props) => {
     const [modalContext, setModalContext] = useContext(ModalContext);
     const note = useContext(NoteContext);
 
-    const { id, noteId } = props;
+    const { id } = props;
 
     const section = note.sections[id];
 
