@@ -52,18 +52,18 @@ const CommentActions = (props) => {
 
     return (
         <div className="comment-actions">
-            <button onClick={() => setModalContext(['editComment', commentId])} className="comment-actions__edit">
+            <button onClick={() => setModalContext(['editComment', commentId])} className="btn comment-actions__edit">
                 <Icons.EditIcon />
             </button>
                 {modalContext[0] === "editComment" && commentId === modalContext[1]  && createPortal(
                     <>
-                        <button onClick={() => setModalContext(false)}>Close</button>
+                        <button className="btn" onClick={() => setModalContext(false)}>Close</button>
                         <h3>Edit Comment</h3>
                         <CommentForm commentData={comment} mutation={editComment} submitText="Save" />
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={deleteComment.mutate} className="close-btn comment-actions__delete">
+            <button onClick={deleteComment.mutate} className="btn close-btn comment-actions__delete">
                 <Icons.DeleteIcon />
             </button>
         </div>

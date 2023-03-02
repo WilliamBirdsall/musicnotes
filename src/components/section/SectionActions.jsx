@@ -74,7 +74,9 @@ const SectionActions = (props) => {
 
     return(
         <div className="section-actions">
-            <button onClick={() => setModalContext(["addComment", section.id])} className="section__add-comment">+ Add Comment</button>
+            <button onClick={() => setModalContext(["addComment", section.id])} className="btn section__add-comment">
+                <Icons.NewItemIcon />
+            </button>
                 {modalContext[0] === "addComment" && section.id === modalContext[1] && createPortal(
                     <>
                         <button onClick={() => setModalContext(false)}>Close</button>
@@ -83,18 +85,18 @@ const SectionActions = (props) => {
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={() => setModalContext(["editSection", section.id])} className="section-actions__edit">
+            <button onClick={() => setModalContext(["editSection", section.id])} className="btn section-actions__edit">
                 <Icons.EditIcon />
             </button>
                 {modalContext[0] === "editSection" && section.id === modalContext[1] && createPortal(
                     <>
-                        <button onClick={() => setModalContext(false)}>Close</button>
+                        <button className="btn" onClick={() => setModalContext(false)}>Close</button>
                         <h3>Edit Section</h3>
                         <SectionForm sectionData={section} mutation={editSection} submitText="Save" />
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={deleteSection.mutate} className="close-btn section-actions__delete">
+            <button onClick={deleteSection.mutate} className="btn close-btn section-actions__delete">
                 <Icons.DeleteIcon />
             </button>
         </div>

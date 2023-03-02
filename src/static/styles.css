@@ -1,9 +1,9 @@
 /* COLORS */
 :root {
     --color-black: #222;
-    --color-dark-grey: #6a6a6a;
+    --color-grey-dark: #6a6a6a;
     --color-grey: #C4C4C4;
-    --color-light-grey: #DFDFDF;
+    --color-grey-light: #DFDFDF;
     --color-white: #EFEFEF;
 
     --color-red: #ff5747;
@@ -83,13 +83,22 @@ footer {
 
 /* NOTES */
 .note {
-    background-color: var(--color-light-grey);
+    background-color: var(--color-grey-light);
     border-radius: var(--border-radius-primary);
     margin-bottom: 1.25rem;
     padding: 1.25rem;
 }
 
+.note:hover .note__link {
+    text-decoration: underline;
+}
+
+.note__link {
+    text-decoration: none;
+}
+
 .note__heading {
+    color: var(--color-primary);
     margin-top: 0rem;
 }
 
@@ -97,9 +106,48 @@ footer {
     margin-bottom: .25rem;
 }
 
+/* NOTE DETAILS */
+.note-detail__sections-heading {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.note-detail__sections-heading h2, .note-detail__sections-heading button {
+    justify-self: center;
+}
+
+.note-detail__sections-heading h2 {
+    margin: 0;
+}
+
+.note-detail__sections-heading button {
+    margin-left: .5rem;
+}
+
+.note-detail__meta {
+    color: var(--color-grey-dark);
+    text-align: center;
+}
+
 /* SECTIONS */
+.section__header {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0 .5rem;
+}
+
+.section__header h3 {
+    margin: 0;
+}
+
 .add-section-btn {
     display: inline;
+}
+
+.section__times {
+    color: var(--color-grey-dark);
+    margin: 0 .5rem;
 }
 
 /* COMMENT */
@@ -170,9 +218,15 @@ footer {
 }
 
 /* BUTTONS */
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .create-btn{
     align-self: end;
-    background-color: var(--color-grey);
+    background-color: var(--color-grey-light);
     border-radius: 50%;
     display: flex;
     justify-content: center;
