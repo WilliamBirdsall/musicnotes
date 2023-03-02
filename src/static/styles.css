@@ -107,6 +107,10 @@ footer {
 }
 
 /* NOTE DETAILS */
+.note-detail__heading {
+    margin: 1rem 0;
+}
+
 .note-detail__sections-heading {
     display: flex;
     align-items: center;
@@ -134,7 +138,7 @@ footer {
 .section__header {
     display: flex;
     align-items: center;
-    margin: 2rem 0 .5rem;
+    margin: 1rem 0 .5rem;
 }
 
 .section__header h3 {

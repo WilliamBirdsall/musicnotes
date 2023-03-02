@@ -20,7 +20,7 @@ const Section = (props) => {
                 <span className="section__times">{start}-{end}</span>
                 {!moreOpen &&
                     <button onClick={() => toggleMoreOpen()} className="btn section__more-btn">
-                        <Icons.MoreCircleIcon />
+                        <Icons.MoreIcon />
                     </button>
                 }
                 {moreOpen && <SectionActions id={id} moreOpenToggle={toggleMoreOpen} />}
