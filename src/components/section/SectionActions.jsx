@@ -36,6 +36,8 @@ const SectionActions = (props) => {
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note', note.id]});
+
+            props.moreOpenToggle();
         }
     });
 
@@ -56,6 +58,8 @@ const SectionActions = (props) => {
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note', note.id]});
+
+            props.moreOpenToggle();
         }
     });
 

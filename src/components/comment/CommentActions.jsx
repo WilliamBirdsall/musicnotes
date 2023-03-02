@@ -34,6 +34,9 @@ const CommentActions = (props) => {
 
             // Invalidate 'note' query
             queryClient.invalidateQueries({queryKey: ['note']});
+
+            // Toggle comment more menu
+            props.moreOpenToggle();
         }
     });
 
@@ -52,20 +55,22 @@ const CommentActions = (props) => {
 
     return (
         <div className="comment-actions">
-            <button onClick={() => setModalContext(['editComment', commentId])} className="btn comment-actions__edit">
-                <Icons.EditIcon />
-            </button>
-                {modalContext[0] === "editComment" && commentId === modalContext[1]  && createPortal(
-                    <>
-                        <button className="btn" onClick={() => setModalContext(false)}>Close</button>
-                        <h3>Edit Comment</h3>
-                        <CommentForm commentData={comment} mutation={editComment} submitText="Save" />
-                    </>,
-                    document.getElementById("modal")
-                )}
-            <button onClick={deleteComment.mutate} className="btn close-btn comment-actions__delete">
-                <Icons.DeleteIcon />
-            </button>
+            <div className="comment-actions__menu">
+                <button onClick={() => setModalContext(['editComment', commentId])} className="btn comment-actions__edit">
+                    <Icons.EditIcon />
+                </button>
+                    {modalContext[0] === "editComment" && commentId === modalContext[1]  && createPortal(
+                        <>
+                            <button className="btn" onClick={() => setModalContext(false)}>Close</button>
+                            <h3>Edit Comment</h3>
+                            <CommentForm commentData={comment} mutation={editComment} submitText="Save" />
+                        </>,
+                        document.getElementById("modal")
+                    )}
+                <button onClick={deleteComment.mutate} className="btn close-btn comment-actions__delete">
+                    <Icons.DeleteIcon />
+                </button>
+            </div>
         </div>
     );
 };
