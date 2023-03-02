@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-
 import { useQueryClient, useMutation } from '@tanstack/react-query';
+import {useState} from 'react';
+
+import Icons from '../shared/Icons';
 
 const Note = (props) => {
     const noteLink = `/notes/${props.id}`;
@@ -19,6 +21,12 @@ const Note = (props) => {
         }
     });
 
+    const [moreOpen, setMoreOpen] = useState(false);
+
+    const toggleMoreOpen = () => {
+        moreOpen ? setMoreOpen(false) : setMoreOpen(true);
+    };
+
     return (
         <div className="note">
             <Link to={noteLink} className="note__link">
@@ -29,8 +37,21 @@ const Note = (props) => {
             <div className="note__meta">
                 {props.genre} &bull; {props.bpm}bpm &bull; {props.noteKey} {props.scale}
             </div>
-            <Link to={editLink} className="note__edit">Edit</Link>
-            <button onClick={deleteNote.mutate} className="note__delete">Delete</button>
+            {!moreOpen &&
+                <button onClick={() => toggleMoreOpen()} className="btn note__more-btn">
+                    <Icons.MoreIcon />
+                </button>
+            }
+            {moreOpen &&
+                <>
+                    <Link to={editLink} className="note__edit">
+                        <Icons.EditIcon />
+                    </Link>
+                    <button onClick={deleteNote.mutate} className="btn note__delete">
+                        <Icons.DeleteIcon />
+                    </button>
+                </>
+            }
         </div>
     );
 };
