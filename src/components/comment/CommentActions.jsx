@@ -45,7 +45,7 @@ const CommentActions = (props) => {
             localStorage.setItem(note.id, JSON.stringify(note));
 
             // Invalidate 'note' query
-            queryClient.invalidateQueries({queryKey: ['note']});
+            queryClient.resetQueries({queryKey: ['note', note.id]});
         }
     });
 

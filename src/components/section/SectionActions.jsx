@@ -34,7 +34,7 @@ const SectionActions = (props) => {
             setModalContext(false);
 
             // Invalidate 'note' query
-            queryClient.invalidateQueries({queryKey: ['note']});
+            queryClient.invalidateQueries({queryKey: ['note', note.id]});
         }
     });
 
@@ -54,7 +54,7 @@ const SectionActions = (props) => {
             setModalContext(false);
 
             // Invalidate 'note' query
-            queryClient.invalidateQueries({queryKey: ['note']});
+            queryClient.invalidateQueries({queryKey: ['note', note.id]});
         }
     });
 
@@ -67,7 +67,7 @@ const SectionActions = (props) => {
             localStorage.setItem(note.id, JSON.stringify(note));
 
             // Invalidate 'note' query
-            queryClient.invalidateQueries({queryKey: ['note']});
+            return queryClient.resetQueries({queryKey: ['note', note.id]});
         }
     });
 
