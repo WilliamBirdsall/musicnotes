@@ -12,11 +12,13 @@ const Comment = (props) => {
 
     return (
         <div className={classes}>
-            <div className="comment__tag">{formattedTag}</div>
+            <div className="comment__upper-section">
+                <div className="comment__tag">{formattedTag}</div>
+                <CommentActions sectionId={sectionId} commentId={id}/>
+            </div>
             <div className="comment__text">
                 {text}
             </div>
-            <CommentActions sectionId={sectionId} commentId={id}/>
         </div>
     );
 }
