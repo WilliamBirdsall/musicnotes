@@ -27,9 +27,10 @@ const NoteDetail = (props) => {
                 </h1>
                 <div className="note-detail__meta">
                     <span className="note-detail__genre">{note.genre}</span>
-                    <span className="note-detail__bpm">{note.bpm}</span>
-                    <span className="note-detail__key">{note.noteKey}</span>
-                    <span className="note-detail__scale">{note.scale}</span>
+                    <span className="note-detail__divider">|</span>
+                    <span className="note-detail__bpm">{note.bpm}bpm</span>
+                    <span className="note-detail__divider">|</span>
+                    <span className="note-detail__key">{note.noteKey} {note.scale}</span>
                 </div>
                 <div className="note-detail__sections-heading">
                     <h2>Sections</h2>

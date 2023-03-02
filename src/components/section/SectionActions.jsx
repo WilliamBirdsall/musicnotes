@@ -91,7 +91,9 @@ const SectionActions = (props) => {
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={deleteSection.mutate} className="section-actions__delete">Delete</button>
+            <button onClick={deleteSection.mutate} className="close-btn section-actions__delete">
+                &#10005;
+            </button>
         </div>
     );
 };

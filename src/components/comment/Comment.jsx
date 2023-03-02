@@ -8,8 +8,11 @@ const Comment = (props) => {
 
     const classes = `comment ${tag}`;
 
+    const formattedTag = tag.replace('-', ' ');
+
     return (
         <div className={classes}>
+            <div className="comment__tag">{formattedTag}</div>
             <div className="comment__text">
                 {text}
             </div>

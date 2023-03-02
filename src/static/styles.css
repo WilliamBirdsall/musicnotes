@@ -1,10 +1,21 @@
 /* COLORS */
 :root {
     --color-black: #222;
-    --color-dark-grey: #3D3D3D;
+    --color-dark-grey: #6a6a6a;
     --color-grey: #C4C4C4;
     --color-light-grey: #DFDFDF;
     --color-white: #EFEFEF;
+
+    --color-red: #ff5747;
+    --color-orange: #f2a752;
+    --color-yellow: #f5e171;
+    --color-blue: #4287f5;
+    --color-purple: #b86ded;
+
+    --color-orange-dark: #80582b;
+    --color-yellow-dark: #80753b;
+    --color-blue-dark: #224680;
+    --color-purple-dark: #633b80;
 
     --color-primary: var(--color-black);
     --color-secondary: var(--color-white);
@@ -74,26 +85,53 @@ footer {
 
 /* COMMENT */
 .comment {
-    border: solid .1rem var(--color-grey);
+    background: var(--color-grey);
     border-radius: var(--border-radius-primary);
     margin-bottom: 1rem;
-    padding: .5rem;
+    max-width: 30%;
+    padding: 1rem;
 }
 
 .comment.rythmic {
-    border-color: orange;
+    background-color: var(--color-orange);
 }
 
 .comment.melodic {
-    border-color: yellow;
+    background-color: var(--color-yellow);
 }
 
 .comment.harmonic {
-    border-color: blue;
+    background-color: var(--color-blue);
 }
 
 .comment.sound-design {
-    border-color: purple;
+    background-color: var(--color-purple);
+}
+
+.comment__tag {
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.comment.rythmic .comment__tag {
+    color: var(--color-orange-dark);
+}
+
+.comment.melodic .comment__tag {
+    color: var(--color-yellow-dark);
+}
+
+.comment.harmonic .comment__tag {
+    color: var(--color-blue-dark);
+}
+
+.comment.sound-design .comment__tag {
+    color: var(--color-purple-dark);
+}
+
+.comment.untagged .comment__tag {
+    color: var(--color-dark-grey);
 }
 
 /* MODAL */
@@ -105,6 +143,22 @@ footer {
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 1;
+}
+
+/* BUTTONS */
+.close-btn {
+    border: none;
+    border-radius: 5px;
+    background: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: .5rem .7rem;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, .5);
+    color: var(--color-red);
+    cursor: pointer;
 }
 
 /* UTILS */

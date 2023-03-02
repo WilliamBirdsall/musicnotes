@@ -60,7 +60,9 @@ const CommentActions = (props) => {
                     </>,
                     document.getElementById("modal")
                 )}
-            <button onClick={deleteComment.mutate} className="comment-actions__delete">Delete</button>
+            <button onClick={deleteComment.mutate} className="close-btn comment-actions__delete">
+                &#10005;
+            </button>
         </div>
     );
 };
