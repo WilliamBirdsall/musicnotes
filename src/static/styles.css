@@ -20,8 +20,8 @@
     --color-primary: var(--color-black);
     --color-secondary: var(--color-white);
 
-    --font-heading: Helvetica, sans-serif;
-    --font-body: Helvetica, sans-serif;
+    --font-heading: 'helvetica neue', sans-serif;
+    --font-body: 'helvetica neue', sans-serif;
 
     --base-vertical-padding: 4.375rem;
     --base-side-padding: 32px;
@@ -42,7 +42,26 @@ body {
     margin: 0 auto;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem var(--base-side-padding);
+}
+
+header nav {
+    align-self: end;
+}
+
+header .logo {
+    color: var(--color-primary);
+    font-size: 1.625rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 main {
+    display: flex;
+    flex-direction: column;
     padding: 0rem var(--base-side-padding);
 }
 
@@ -88,7 +107,6 @@ footer {
     background: var(--color-grey);
     border-radius: var(--border-radius-primary);
     margin-bottom: 1rem;
-    max-width: 30%;
     padding: 1rem;
 }
 
@@ -152,6 +170,20 @@ footer {
 }
 
 /* BUTTONS */
+.create-btn{
+    align-self: end;
+    background-color: var(--color-grey);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+}
+
+.create-btn svg {
+    align-self: center;
+}
+
 .close-btn {
     border: none;
     border-radius: 5px;

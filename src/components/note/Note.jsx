@@ -23,16 +23,11 @@ const Note = (props) => {
         <div className="note">
             <Link to={noteLink} className="note__link">
                 <h3 className="note__heading">
-                    <span className="note__title">{props.title}</span>
-                    -
-                    <span className="note__artist">{props.artist}</span>
+                    {props.title} &ndash; {props.artist}
                 </h3>
             </Link>
             <div className="note__meta">
-                <span className="note__genre">{props.genre}</span>
-                <span className="note__bpm">{props.bpm}</span>
-                <span className="note__key">{props.noteKey}</span>
-                <span className="note__scale">{props.scale}</span>
+                {props.genre} &bull; {props.bpm}bpm &bull; {props.noteKey} {props.scale}
             </div>
             <Link to={editLink} className="note__edit">Edit</Link>
             <button onClick={deleteNote.mutate} className="note__delete">Delete</button>

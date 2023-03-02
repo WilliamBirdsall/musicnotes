@@ -8,7 +8,6 @@ const NoteList = () => {
 
     return(
         <>
-            <h2>Notes</h2>
             <div className="note-list">
                 {notes.data?.map(note => <Note key={note.id} {...note} />)}
             </div>
