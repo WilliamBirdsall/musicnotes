@@ -17,7 +17,11 @@ const Section = (props) => {
         <div className="section">
             <div className="section__header">
                 <h3 className="section__title">{title}</h3>
-                <span className="section__times">{start}-{end}</span>
+                <span className="section__times">
+                { start && end &&
+                    `${start}-${end}`
+                }
+                </span>
                 {!moreOpen &&
                     <button onClick={() => toggleMoreOpen()} className="btn section__more-btn">
                         <Icons.MoreIcon />
