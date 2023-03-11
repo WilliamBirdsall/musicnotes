@@ -2,7 +2,7 @@
 
 ## What is MusicNotes?
 
-MusicNotes is a simple, open-source tool that allows users to quickly create notes that detail elements of a song during deep listening or analysis. MusicNotes does not store any data on the server. Data is soley stored in the browser and will be lost upon browser data clears. Due to this nature of the app, an export as PDF functionality is available for the user to back up and share their notes.
+MusicNotes is a simple, open-source tool that allows users to quickly create notes that detail elements of a song during deep listening or analysis. MusicNotes does not store any data on the server. Data is soley stored in the browser and will be lost upon browser data clears.
 
 ## Why MusicNotes?
 
