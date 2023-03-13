@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
 import { useMutation } from "@tanstack/react-query";
 import { ModalContext } from '../template/ModalContext';
+import { NoteContext } from './../note/NoteContext';
+import { createPortal } from 'react-dom';
 
 import CommentForm from '../comment/CommentForm';
 import CommentList from '../comment/CommentList';
 import SectionActions from './SectionActions';
 import Icons from '../shared/Icons';
 
-const [modalContext, setModalContext] = useContext(ModalContext);
-const note = useContext(NoteContext);
 
 const Section = (props) => {
     const {title, start, end, id, comments} = props.section;
@@ -18,6 +18,9 @@ const Section = (props) => {
     const toggleMoreOpen = () => {
         moreOpen ? setMoreOpen(false) : setMoreOpen(true);
     };
+
+    const [modalContext, setModalContext] = useContext(ModalContext);
+    const note = useContext(NoteContext);
 
     const createComment = useMutation({
         mutationFn: (event) => {
@@ -65,7 +68,11 @@ const Section = (props) => {
             </button>
                 {modalContext[0] === "addComment" && id === modalContext[1] && createPortal(
                     <>
-                        <button onClick={() => setModalContext(false)}>Close</button>
+                        <div className="close-btn-wrapper">
+                            <button className="btn" onClick={() => setModalContext(false)}>
+                                <Icons.CloseIcon />
+                            </button>
+                        </div>
                         <h3>Add Comment</h3>
                         <CommentForm commentData={props.section} mutation={createComment} submitText="Submit" />
                     </>,

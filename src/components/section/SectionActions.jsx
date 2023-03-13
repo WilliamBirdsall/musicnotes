@@ -61,7 +61,11 @@ const SectionActions = (props) => {
             </button>
                 {modalContext[0] === "editSection" && section.id === modalContext[1] && createPortal(
                     <>
-                        <button className="btn" onClick={() => setModalContext(false)}>Close</button>
+                        <div className="close-btn-wrapper">
+                            <button className="btn" onClick={() => setModalContext(false)}>
+                                <Icons.CloseIcon />
+                            </button>
+                        </div>
                         <h3>Edit Section</h3>
                         <SectionForm sectionData={section} mutation={editSection} submitText="Save" />
                     </>,

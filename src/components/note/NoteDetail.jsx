@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 
@@ -10,8 +10,9 @@ import getNote from '../../queries/getNote';
 import Icons from '../shared/Icons';
 import Section from '../section/Section';
 
-const NoteDetail = (props) => {
+const NoteDetail = () => {
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     // TODO: Show modal for delete confirmation
     const deleteNote = useMutation({
@@ -21,6 +22,8 @@ const NoteDetail = (props) => {
 
             // Invalidate 'notes' query
             queryClient.invalidateQueries({queryKey: ['notes']});
+
+            navigate('/');
         }
     });
 
@@ -48,9 +51,9 @@ const NoteDetail = (props) => {
                 }
                 {moreOpen &&
                     <>
-                        <Link to={editLink} className="note__edit">
+                        <button onClick={() => navigate(editLink)} className="note__edit btn">
                             <Icons.EditIcon />
-                        </Link>
+                        </button>
                         <button onClick={deleteNote.mutate} className="btn note__delete">
                             <Icons.DeleteIcon />
                         </button>

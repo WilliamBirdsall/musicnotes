@@ -15,7 +15,7 @@ const NoteForm = (props) => {
     const submitText = props.submitText;
 
     return(
-        <form onSubmit={props.mutation.mutate}>
+        <form className="note-form" onSubmit={props.mutation.mutate}>
             <label htmlFor="">Title:</label>
             <input type="text" name="title" id="title" defaultValue={title} />
 
