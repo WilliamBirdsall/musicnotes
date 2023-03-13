@@ -1,8 +1,14 @@
-import {useState} from 'react';
+import { useContext, useState } from 'react';
+import { useMutation } from "@tanstack/react-query";
+import { ModalContext } from '../template/ModalContext';
 
+import CommentForm from '../comment/CommentForm';
 import CommentList from '../comment/CommentList';
 import SectionActions from './SectionActions';
 import Icons from '../shared/Icons';
+
+const [modalContext, setModalContext] = useContext(ModalContext);
+const note = useContext(NoteContext);
 
 const Section = (props) => {
     const {title, start, end, id, comments} = props.section;
@@ -12,6 +18,28 @@ const Section = (props) => {
     const toggleMoreOpen = () => {
         moreOpen ? setMoreOpen(false) : setMoreOpen(true);
     };
+
+    const createComment = useMutation({
+        mutationFn: (event) => {
+            event.preventDefault();
+
+            const commentId = crypto.randomUUID().slice(0,8);
+            const newComment = Object.fromEntries(new FormData(event.target));
+            newComment['id'] = commentId;
+
+            note.sections[id].comments[commentId] = newComment;
+
+            localStorage.setItem(note.id, JSON.stringify(note));
+
+            // Close modal
+            setModalContext(false);
+
+            // Invalidate 'note' query
+            queryClient.invalidateQueries({queryKey: ['note', note.id]});
+
+            props.moreOpenToggle();
+        }
+    });
 
     return(
         <div className="section">
@@ -32,6 +60,17 @@ const Section = (props) => {
             <div className="section__commments">
                 <CommentList sectionId={id} comments={comments} />
             </div>
+            <button onClick={() => setModalContext(["addComment", id])} className="btn section__add-comment">
+                <Icons.NewItemSquareIcon />
+            </button>
+                {modalContext[0] === "addComment" && id === modalContext[1] && createPortal(
+                    <>
+                        <button onClick={() => setModalContext(false)}>Close</button>
+                        <h3>Add Comment</h3>
+                        <CommentForm commentData={props.section} mutation={createComment} submitText="Submit" />
+                    </>,
+                    document.getElementById("modal")
+                )}
         </div>
     );
 }

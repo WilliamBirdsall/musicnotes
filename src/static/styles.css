@@ -89,6 +89,10 @@ footer {
     padding: 1.25rem;
 }
 
+.note:hover {
+
+}
+
 .note:hover .note__link {
     text-decoration: underline;
 }
@@ -219,6 +223,15 @@ footer {
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 1;
+}
+
+/* FORMS */
+form input {
+    margin-bottom: 1.25rem;
+}
+
+form input[type=submit] {
+    margin-bottom: 0;
 }
 
 /* BUTTONS */

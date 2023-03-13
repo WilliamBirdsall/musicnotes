@@ -5,7 +5,6 @@ import { createPortal } from 'react-dom';
 import { ModalContext } from '../template/ModalContext';
 import { NoteContext } from './../note/NoteContext';
 
-import CommentForm from '../comment/CommentForm';
 import Icons from '../shared/Icons';
 import SectionForm from './SectionForm';
 
@@ -19,27 +18,6 @@ const SectionActions = (props) => {
 
     const section = note.sections[id];
 
-    const createComment = useMutation({
-        mutationFn: (event) => {
-            event.preventDefault();
-
-            const commentId = crypto.randomUUID().slice(0,8);
-            const newComment = Object.fromEntries(new FormData(event.target));
-            newComment['id'] = commentId;
-
-            note.sections[id].comments[commentId] = newComment;
-
-            localStorage.setItem(note.id, JSON.stringify(note));
-
-            // Close modal
-            setModalContext(false);
-
-            // Invalidate 'note' query
-            queryClient.invalidateQueries({queryKey: ['note', note.id]});
-
-            props.moreOpenToggle();
-        }
-    });
 
     const editSection = useMutation({
         mutationFn: (event) => {
@@ -78,17 +56,6 @@ const SectionActions = (props) => {
 
     return(
         <div className="section-actions">
-            <button onClick={() => setModalContext(["addComment", section.id])} className="btn section__add-comment">
-                <Icons.NewItemIcon />
-            </button>
-                {modalContext[0] === "addComment" && section.id === modalContext[1] && createPortal(
-                    <>
-                        <button onClick={() => setModalContext(false)}>Close</button>
-                        <h3>Add Comment</h3>
-                        <CommentForm commentData={section} mutation={createComment} submitText="Submit" />
-                    </>,
-                    document.getElementById("modal")
-                )}
             <button onClick={() => setModalContext(["editSection", section.id])} className="btn section-actions__edit">
                 <Icons.EditIcon />
             </button>
