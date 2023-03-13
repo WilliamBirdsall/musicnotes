@@ -68,9 +68,11 @@ const Section = (props) => {
             </button>
                 {modalContext[0] === "addComment" && id === modalContext[1] && createPortal(
                     <>
-                        <button className="btn" onClick={() => setModalContext(false)}>
-                            <Icons.CloseIcon />
-                        </button>
+                        <div className="close-btn-wrapper">
+                            <button className="btn" onClick={() => setModalContext(false)}>
+                                <Icons.CloseIcon />
+                            </button>
+                        </div>
                         <h3>Add Comment</h3>
                         <CommentForm commentData={props.section} mutation={createComment} submitText="Submit" />
                     </>,

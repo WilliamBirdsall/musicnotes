@@ -61,7 +61,11 @@ const CommentActions = (props) => {
                 </button>
                     {modalContext[0] === "editComment" && commentId === modalContext[1]  && createPortal(
                         <>
-                            <button className="btn" onClick={() => setModalContext(false)}>Close</button>
+                            <div className="close-btn-wrapper">
+                                <button className="btn" onClick={() => setModalContext(false)}>
+                                    <Icons.CloseIcon />
+                                </button>
+                            </div>
                             <h3>Edit Comment</h3>
                             <CommentForm commentData={comment} mutation={editComment} submitText="Save" />
                         </>,

@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 
@@ -51,9 +51,9 @@ const NoteDetail = () => {
                 }
                 {moreOpen &&
                     <>
-                        <Link to={editLink} className="note__edit">
+                        <button onClick={() => navigate(editLink)} className="note__edit btn">
                             <Icons.EditIcon />
-                        </Link>
+                        </button>
                         <button onClick={deleteNote.mutate} className="btn note__delete">
                             <Icons.DeleteIcon />
                         </button>

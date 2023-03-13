@@ -23,7 +23,7 @@ const CommentForm = (props) => {
                 <option value="sound-design">Sound Design</option>
                 <option value="untagged">Untagged</option>
             </select>
-            <button type="submit">{submitText}</button>
+            <input type="submit" value={submitText} />
         </form>
     );
 }
