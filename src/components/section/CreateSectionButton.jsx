@@ -42,7 +42,9 @@ const CreateSectionButton = (props) => {
             </button>
                 {modalContext[0] === "addSection" && modalContext[1] === note.id && createPortal(
                     <>
-                        <button onClick={() => setModalContext(false)}>Close</button>
+                        <button className="btn" onClick={() => setModalContext(false)}>
+                            <Icons.CloseIcon />
+                        </button>
                         <h3>New Section</h3>
                         <SectionForm mutation={createSection} submitText="Create" />
                     </>,

@@ -28,7 +28,7 @@
 
     --tablet-side-padding: 75px;
     --laptop-side-padding: 150px;
-    --desktop-side-padding: 500px;
+    --desktop-side-padding: 250px;
 
     --border-radius-primary: 5px;
 }
@@ -211,7 +211,7 @@ footer {
 }
 
 .comment.untagged .comment__tag {
-    color: var(--color-dark-grey);
+    color: var(--color-grey-dark);
 }
 
 /* MODAL */
@@ -226,12 +226,21 @@ footer {
 }
 
 /* FORMS */
-form input {
+form input, form textarea, form select {
     margin-bottom: 1.25rem;
+}
+
+form select, form label {
+    display: block;
 }
 
 form input[type=submit] {
     margin-bottom: 0;
+}
+
+.note-form {
+    display: flex;
+    flex-direction: column;
 }
 
 /* BUTTONS */
@@ -274,4 +283,36 @@ form input[type=submit] {
 .hidden {
     display: none;
     color: red;
+}
+
+/* BREAKPOINTS */
+
+@media only screen and (min-width: 768px) {
+    main {
+        padding: 0 var(--tablet-side-padding);
+    }
+
+    header {
+        padding: 2rem var(--tablet-side-padding);
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    main {
+        padding: 0 var(--laptop-side-padding);
+    }
+
+    header {
+        padding: 2rem var(--laptop-side-padding);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    main {
+        padding: 0 var(--desktop-side-padding);
+    }
+
+    header {
+        padding: 2rem var(--desktop-side-padding);
+    }
 }
