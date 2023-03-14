@@ -90,16 +90,12 @@ footer {
     padding: 1.25rem;
 }
 
-.note:hover {
-
-}
-
-.note:hover .note__link {
-    text-decoration: underline;
-}
-
 .note__link {
     text-decoration: none;
+}
+
+.note__link:hover {
+    text-decoration: underline solid var(--color-primary);
 }
 
 .note__heading {
