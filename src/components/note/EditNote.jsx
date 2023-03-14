@@ -21,6 +21,7 @@ const EditNote = () => {
 
             // Invalidate 'notes' query
             queryClient.invalidateQueries({queryKey: ['notes']});
+            queryClient.invalidateQueries({queryKey: ['note', id]});
 
             localStorage.setItem(id, JSON.stringify(updatedNote));
 
