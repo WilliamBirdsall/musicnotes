@@ -25,7 +25,7 @@ const EditNote = () => {
 
             localStorage.setItem(id, JSON.stringify(updatedNote));
 
-            navigate('/');
+            navigate(`/notes/${id}`);
         }
     });
 
