@@ -2,7 +2,6 @@
   "name": "musicnotes",
   "version": "1.0.0",
   "description": "A note taking app specifically designed for music analysis.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
