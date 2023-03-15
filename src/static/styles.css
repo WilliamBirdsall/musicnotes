@@ -232,8 +232,8 @@ footer {
 
 /* FORMS */
 form input, form textarea, form select {
-    color: var(--color-primary)
-    font-size: 1rem;
+    color: var(--color-primary);
+    font-size: 18px;
     margin-bottom: 1.25rem;
     padding: .5rem;
     border: none;
